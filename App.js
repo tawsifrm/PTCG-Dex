@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { TextInput, FlatList, View, Text, Image } from 'react-native';
+import { View } from 'react-native';
+import SearchBar from './components/SearchBar';
+import CardList from './components/CardList';
+import CardDetails from './components/CardDetails';
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -15,37 +18,13 @@ const App = () => {
     }
   }, [searchQuery]);
 
-  const renderCard = ({ item }) => (
-    <View>
-      <Text onPress={() => setSelectedCard(item)}>{item.name}</Text>
-    </View>
-  );
-
   return (
     <View>
-      <TextInput
-        placeholder="Search for a Pokemon"
-        value={searchQuery}
-        onChangeText={setSearchQuery}
-      />
+      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       {selectedCard ? (
-        <View>
-          <Image source={{ uri: selectedCard.images.large }} style={{ width: 200, height: 300 }} />
-          <Text>Name: {selectedCard.name}</Text>
-          <Text>Supertype: {selectedCard.supertype}</Text>
-          <Text>Subtype: {selectedCard.subtypes.join(', ')}</Text>
-          <Text>HP: {selectedCard.hp}</Text>
-          <Text>Types: {selectedCard.types.join(', ')}</Text>
-          <Text>Weaknesses: {selectedCard.weaknesses.map(w => w.type).join(', ')}</Text>
-          <Text>Resistances: {selectedCard.resistances.map(r => r.type).join(', ')}</Text>
-          <Text>Retreat Cost: {selectedCard.retreatCost.join(', ')}</Text>
-        </View>
+        <CardDetails selectedCard={selectedCard} />
       ) : (
-        <FlatList
-          data={cards}
-          renderItem={renderCard}
-          keyExtractor={item => item.id}
-        />
+        <CardList cards={cards} setSelectedCard={setSelectedCard} />
       )}
     </View>
   );
