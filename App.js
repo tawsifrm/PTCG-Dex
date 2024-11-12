@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Button } from 'react-native';
 import SearchBar from './components/SearchBar';
 import CardList from './components/CardList';
 import CardDetails from './components/CardDetails';
+import BinderList from './components/BinderList';
 import styles from './components/styles';
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [binders, setBinders] = useState([]);
+  const [isBinderView, setIsBinderView] = useState(false);
 
   useEffect(() => {
     if (searchQuery) {
@@ -19,13 +22,28 @@ const App = () => {
     }
   }, [searchQuery]);
 
+  const addBinder = (name) => {
+    setBinders([...binders, { id: Date.now().toString(), name }]);
+  };
+
+  const removeBinder = (id) => {
+    setBinders(binders.filter(binder => binder.id !== id));
+  };
+
   return (
     <View style={styles.view}>
-      <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      {selectedCard ? (
-        <CardDetails selectedCard={selectedCard} />
+      <Button title={isBinderView ? "Search Cards" : "View Binders"} onPress={() => setIsBinderView(!isBinderView)} />
+      {isBinderView ? (
+        <BinderList binders={binders} addBinder={addBinder} removeBinder={removeBinder} />
       ) : (
-        <CardList cards={cards} setSelectedCard={setSelectedCard} />
+        <>
+          <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+          {selectedCard ? (
+            <CardDetails selectedCard={selectedCard} />
+          ) : (
+            <CardList cards={cards} setSelectedCard={setSelectedCard} />
+          )}
+        </>
       )}
     </View>
   );

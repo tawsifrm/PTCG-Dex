@@ -7,6 +7,7 @@ PTCG Dex is a React Native mobile app that uses the Pokemon TCG API to allow use
 - Search functionality to allow users to search for a specific Pokemon.
 - Display a list of all the cards related to the searched Pokemon.
 - When a card is selected, show the card image and provide a detailed breakdown of the card's attributes.
+- Create and manage binders to store and organize cards into themed collections.
 
 ## Setup and Run
 
@@ -52,3 +53,14 @@ PTCG Dex is a React Native mobile app that uses the Pokemon TCG API to allow use
 2. Use the search bar to search for a specific Pokemon.
 3. View the list of cards related to the searched Pokemon.
 4. Select a card to view its image and detailed breakdown.
+5. Switch to the binder view to create and manage binders.
+6. Add new binders and organize your cards into themed collections.
+
+## Binder Feature
+
+The binder feature allows users to create and manage binders to store and organize their cards into themed collections. Users can add new binders, remove existing ones, and view the binders in a list format. The binders are styled to look like trading card sleeves, providing a familiar and visually appealing way to organize cards.
+
+### Screenshots
+
+![Binder List](screenshots/binder_list.png)
+![Add Binder](screenshots/add_binder.png)
