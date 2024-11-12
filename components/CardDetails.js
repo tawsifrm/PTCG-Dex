@@ -12,11 +12,11 @@ const CardDetails = ({ selectedCard }) => {
       <Text>Name: {selectedCard.name}</Text>
       <Text>Supertype: {selectedCard.supertype}</Text>
       <Text>Subtype: {selectedCard.subtypes.join(', ')}</Text>
-      <Text>HP: {selectedCard.hp}</Text>
+      <Text>HP: {selectedCard.hp ? selectedCard.hp : 'N/A'}</Text>
       <Text>Types: {selectedCard.types.join(', ')}</Text>
-      <Text>Weaknesses: {selectedCard.weaknesses.map(w => w.type).join(', ')}</Text>
-      <Text>Resistances: {selectedCard.resistances.map(r => r.type).join(', ')}</Text>
-      <Text>Retreat Cost: {selectedCard.retreatCost.join(', ')}</Text>
+      <Text>Weaknesses: {selectedCard.weaknesses ? selectedCard.weaknesses.map(w => w.type).join(', ') : 'N/A'}</Text>
+      <Text>Resistances: {selectedCard.resistances ? selectedCard.resistances.map(r => r.type).join(', ') : 'N/A'}</Text>
+      <Text>Retreat Cost: {selectedCard.retreatCost ? selectedCard.retreatCost.join(', ') : 'N/A'}</Text>
     </View>
   );
 };
