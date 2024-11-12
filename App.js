@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import SearchBar from './components/SearchBar';
 import CardList from './components/CardList';
 import CardDetails from './components/CardDetails';
+import styles from './components/styles';
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -19,7 +20,7 @@ const App = () => {
   }, [searchQuery]);
 
   return (
-    <View>
+    <View style={styles.view}>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
       {selectedCard ? (
         <CardDetails selectedCard={selectedCard} />

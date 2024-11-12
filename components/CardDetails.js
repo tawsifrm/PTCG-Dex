@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
+import styles from './styles';
 
 const CardDetails = ({ selectedCard }) => {
   if (!selectedCard) {
@@ -7,16 +8,16 @@ const CardDetails = ({ selectedCard }) => {
   }
 
   return (
-    <View>
-      <Image source={{ uri: selectedCard.images.large }} style={{ width: 200, height: 300 }} />
-      <Text>Name: {selectedCard.name}</Text>
-      <Text>Supertype: {selectedCard.supertype}</Text>
-      <Text>Subtype: {selectedCard.subtypes.join(', ')}</Text>
-      <Text>HP: {selectedCard.hp ? selectedCard.hp : 'N/A'}</Text>
-      <Text>Types: {selectedCard.types.join(', ')}</Text>
-      <Text>Weaknesses: {selectedCard.weaknesses ? selectedCard.weaknesses.map(w => w.type).join(', ') : 'N/A'}</Text>
-      <Text>Resistances: {selectedCard.resistances ? selectedCard.resistances.map(r => r.type).join(', ') : 'N/A'}</Text>
-      <Text>Retreat Cost: {selectedCard.retreatCost ? selectedCard.retreatCost.join(', ') : 'N/A'}</Text>
+    <View style={styles.view}>
+      <Image source={{ uri: selectedCard.images.large }} style={styles.image} />
+      <Text style={styles.text}>Name: {selectedCard.name}</Text>
+      <Text style={styles.text}>Supertype: {selectedCard.supertype}</Text>
+      <Text style={styles.text}>Subtype: {selectedCard.subtypes.join(', ')}</Text>
+      <Text style={styles.text}>HP: {selectedCard.hp ? selectedCard.hp : 'N/A'}</Text>
+      <Text style={styles.text}>Types: {selectedCard.types.join(', ')}</Text>
+      <Text style={styles.text}>Weaknesses: {selectedCard.weaknesses ? selectedCard.weaknesses.map(w => w.type).join(', ') : 'N/A'}</Text>
+      <Text style={styles.text}>Resistances: {selectedCard.resistances ? selectedCard.resistances.map(r => r.type).join(', ') : 'N/A'}</Text>
+      <Text style={styles.text}>Retreat Cost: {selectedCard.retreatCost ? selectedCard.retreatCost.join(', ') : 'N/A'}</Text>
     </View>
   );
 };
